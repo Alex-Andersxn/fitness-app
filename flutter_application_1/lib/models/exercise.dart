@@ -5,14 +5,14 @@ class Exercise {
   final String description;
   final String category;
   final List<String> muscleGroups;
-  final List<ExerciseSet> sets; // Update this line
+  final List<ExerciseSet> sets;
 
   Exercise({
     required this.title,
     required this.description,
     required this.category,
     required this.muscleGroups,
-    required this.sets, // Update this line
+    required this.sets,
   });
 
   factory Exercise.fromJson(Map<String, dynamic> json) {
@@ -25,8 +25,17 @@ class Exercise {
       category: json['category'],
       muscleGroups: List<String>.from(json['muscleGroups']),
       sets: parsedSets,
-      // Add more properties here if needed
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'description': description,
+      'category': category,
+      'muscleGroups': muscleGroups,
+      'sets': sets.map((set) => set.toJson()).toList(),
+    };
   }
 }
 
@@ -47,5 +56,13 @@ class ExerciseSet {
       reps: json['reps'],
       rpe: json['rpe'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'kg': kg,
+      'reps': reps,
+      'rpe': rpe,
+    };
   }
 }

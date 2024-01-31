@@ -142,6 +142,7 @@ class _FirstPageState extends State<FirstPage> {
             label: 'Profile',
            )
         ],
+        backgroundColor: Colors.deepPurple[100],
       ),
       
       

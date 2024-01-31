@@ -13,6 +13,7 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('History'),
+        backgroundColor: Colors.deepPurple[400],
       ),
     );
   }

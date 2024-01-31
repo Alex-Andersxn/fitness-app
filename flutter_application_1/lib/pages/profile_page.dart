@@ -8,6 +8,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
+        backgroundColor: Colors.deepPurple[400],
         actions: [
           IconButton(
             icon: Icon(Icons.settings),
