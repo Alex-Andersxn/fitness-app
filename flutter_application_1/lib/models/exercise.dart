@@ -1,68 +1,43 @@
-// models/exercise.dart
+import 'ExerciseSet.dart'; // Import ExerciseSet model if not already imported
 
 class Exercise {
-  final String title;
+
+  final int id;
+  final String name;
   final String description;
   final String category;
-  final List<String> muscleGroups;
-  final List<ExerciseSet> sets;
+  final String muscleGroup;
+  final List<ExerciseSet> sets; // Define a property to store sets
 
   Exercise({
-    required this.title,
+    this.id = 0, // Provide a default value for id
+    required this.name,
     required this.description,
     required this.category,
-    required this.muscleGroups,
-    required this.sets,
+    required this.muscleGroup,
+    required this.sets, // Initialize sets in the constructor
   });
 
-  factory Exercise.fromJson(Map<String, dynamic> json) {
-    List<dynamic> setsData = json['sets'] ?? [];
-    List<ExerciseSet> parsedSets = setsData.map((set) => ExerciseSet.fromJson(set)).toList();
-
+  // Add factory method to create Exercise instance from map
+  factory Exercise.fromMap(Map<String, dynamic> map) {
     return Exercise(
-      title: json['title'],
-      description: json['description'],
-      category: json['category'],
-      muscleGroups: List<String>.from(json['muscleGroups']),
-      sets: parsedSets,
+      id: map['id'],
+      name: map['name'],
+      description: map['description'],
+      category: map['category'],
+      muscleGroup: map['muscleGroup'],
+      sets: [], // Initialize sets with an empty list
     );
   }
 
-  Map<String, dynamic> toJson() {
+  // Add method to convert Exercise instance to map
+  Map<String, dynamic> toMap() {
     return {
-      'title': title,
+      'id': id,
+      'name': name,
       'description': description,
       'category': category,
-      'muscleGroups': muscleGroups,
-      'sets': sets.map((set) => set.toJson()).toList(),
-    };
-  }
-}
-
-class ExerciseSet {
-  final String kg;
-  final String reps;
-  final String rpe;
-
-  ExerciseSet({
-    required this.kg,
-    required this.reps,
-    required this.rpe,
-  });
-
-  factory ExerciseSet.fromJson(Map<String, dynamic> json) {
-    return ExerciseSet(
-      kg: json['kg'],
-      reps: json['reps'],
-      rpe: json['rpe'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'kg': kg,
-      'reps': reps,
-      'rpe': rpe,
+      'muscleGroup': muscleGroup,
     };
   }
 }

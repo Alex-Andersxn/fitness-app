@@ -13,7 +13,7 @@ class ExerciseCard extends StatelessWidget {
       elevation: 2,
       margin: EdgeInsets.all(8.0),
       child: ListTile(
-        title: Text(exercise.title),
+        title: Text(exercise.name), // Use exercise.name instead of exercise.title
         subtitle: Text(exercise.category),
         onTap: onTap,
       ),

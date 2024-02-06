@@ -27,7 +27,7 @@ class CardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              exercise.title,
+              exercise.name,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
@@ -46,7 +46,7 @@ class CardWidget extends StatelessWidget {
                     TableCell(child: Text('Kg', style: TextStyle(fontWeight: FontWeight.bold))),
                     TableCell(child: Text('Reps', style: TextStyle(fontWeight: FontWeight.bold))),
                     TableCell(child: Text('RPE', style: TextStyle(fontWeight: FontWeight.bold))),
-                    TableCell(child: Container()), // Empty cell for the checkbox
+                    TableCell(child: Container()), // Empty cell for the delete button
                   ],
                 ),
                 for (int i = 0; i < exercise.sets.length; i++)
@@ -61,7 +61,7 @@ class CardWidget extends StatelessWidget {
                           icon: Icon(Icons.delete),
                           onPressed: () {
                             // Remove the set when the delete button is pressed
-                            onRemoveSet(i);
+                            onRemoveSet(exercise.sets[i].id);
                           },
                         ),
                       ),
